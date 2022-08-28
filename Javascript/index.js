@@ -5,6 +5,11 @@ const bubbleMaker = () => {
   const bubble = document.createElement("span");
   const size = Math.random() * 200 + 100 + "px";
   const plusMinus = Math.random() > 0.5 ? 1 : -1;
+  const explodedBubble = () => {
+    const audio = new Audio();
+    audio.src = "../assets/explodedBubble.wav";
+    audio.play();
+  };
 
   bubble.classList.add("bubble");
   document.body.appendChild(bubble);
@@ -19,6 +24,7 @@ const bubbleMaker = () => {
 
   bubble.addEventListener("click", () => {
     bubble.remove();
+    explodedBubble();
     counter++;
     counterDisplay.textContent = counter;
   });
